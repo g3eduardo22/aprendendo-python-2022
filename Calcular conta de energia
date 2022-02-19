@@ -1,0 +1,25 @@
+valor_inicial = int(input('Digite o KWh inicial: '))
+valor_atual = int(input('Digite o KWh atual: '))
+consumo = valor_atual - valor_inicial
+consumo = int(consumo)
+valor_30 = float(0.276333)
+valor_100 = float(0.474429)
+valor_250 = float(0.711765)
+valor_ip = float(12.48)
+imposto = float(9.80)
+#valor_consumo_30 = float(consumo * valor_30)
+valor_consumo_100 = float((consumo - 30) * valor_100) + (30 * valor_30) + valor_ip + imposto
+valor_consumo_250 = float((consumo - 100) * valor_250) + (30 * valor_30) + (70 * valor_100 ) + valor_ip + imposto 
+if consumo <= 30:
+    print('voce está na 1° faixa de preço, até 30kwh')
+    consumo_30 = float(consumo * valor_30)
+    total_30 = float(consumo_30 + valor_ip)
+    print(f'você consumiu {consumo}kwh e valor da sua fatura sera R$ {total_30}')
+elif consumo > 30 and consumo <= 100:
+    print('você está na 2° faixa de preço, até 100kwh')
+    total_100 = valor_consumo_100
+    print(f'você consumiu {consumo}kwh e valor da sua fatura sera R$ {total_100}')
+elif consumo > 100:
+    print('você está na 3° faixa de preço, até 250kwh')
+    total_250 = valor_consumo_250
+    print(f'você consumiu {consumo}kwh e valor da sua fatura sera R$ {total_250}')
